@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 let aiClient: GoogleGenAI | null = null;
 function getAI(): GoogleGenAI {
@@ -18,6 +19,25 @@ function getAI(): GoogleGenAI {
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Keep emulator storage on this machine while allowing remote browsers to use it through the single public tunnel.
+  app.use(['/v1', '/google.firestore.v1.Firestore'], createProxyMiddleware({
+    target: 'http://127.0.0.1:8080',
+    changeOrigin: true,
+    ws: true,
+    pathRewrite: (path, req) => {
+      const originalUrl = (req as any).originalUrl || '';
+      const prefix = originalUrl.startsWith('/google.firestore.v1.Firestore')
+        ? '/google.firestore.v1.Firestore'
+        : '/v1';
+      return `${prefix}${path}`;
+    }
+  }));
+  app.use('/identitytoolkit.googleapis.com', createProxyMiddleware({
+    target: 'http://127.0.0.1:9099',
+    changeOrigin: true,
+    pathRewrite: (path) => `/identitytoolkit.googleapis.com${path}`
+  }));
 
   app.use(express.json());
 
