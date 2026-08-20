@@ -1,0 +1,148 @@
+{
+  "entities": {
+    "users": {
+      "description": "User profiles with role-based access control",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "branchId": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "branches": {
+      "description": "Company branches in Libya and regions",
+      "properties": {
+        "name": { "type": "string" },
+        "code": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "isMain": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "warehouses": {
+      "description": "Warehouses belonging to branches",
+      "properties": {
+        "branchId": { "type": "string" },
+        "name": { "type": "string" },
+        "code": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "locations": {
+      "description": "Physical warehouse bin locations (e.g., A-03-02-07)",
+      "properties": {
+        "warehouseId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "zone": { "type": "string" },
+        "aisle": { "type": "string" },
+        "shelf": { "type": "string" },
+        "bin": { "type": "string" },
+        "code": { "type": "string" },
+        "capacity": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "categories": {
+      "description": "Mercedes EPC Groups and Subgroups",
+      "properties": {
+        "groupCode": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "nameAr": { "type": "string" },
+        "subgroups": { "type": "array" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "parts": {
+      "description": "Mercedes-Benz spare parts master records",
+      "properties": {
+        "partNumber": { "type": "string" },
+        "originalPartNumber": { "type": "string" },
+        "supersededNumbers": { "type": "array" },
+        "alternativeNumbers": { "type": "array" },
+        "nameEn": { "type": "string" },
+        "nameAr": { "type": "string" },
+        "description": { "type": "string" },
+        "categoryGroup": { "type": "string" },
+        "subgroup": { "type": "string" },
+        "epcIllustration": { "type": "string" },
+        "epcPosition": { "type": "string" },
+        "compatibility": { "type": "array" },
+        "side": { "type": "string" },
+        "position": { "type": "string" },
+        "condition": { "type": "string" },
+        "quality": { "type": "string" },
+        "brand": { "type": "string" },
+        "unit": { "type": "string" },
+        "weightKg": { "type": "number" },
+        "costPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "wholesalePrice": { "type": "number" },
+        "minStock": { "type": "number" },
+        "maxStock": { "type": "number" },
+        "reorderLevel": { "type": "number" },
+        "barcode": { "type": "string" },
+        "qrCode": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "notes": { "type": "string" },
+        "totalStock": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "inventory": {
+      "description": "Stock levels per part, warehouse, and location",
+      "properties": {
+        "partId": { "type": "string" },
+        "partNumber": { "type": "string" },
+        "branchId": { "type": "string" },
+        "warehouseId": { "type": "string" },
+        "locationId": { "type": "string" },
+        "locationCode": { "type": "string" },
+        "quantity": { "type": "number" },
+        "reservedQuantity": { "type": "number" },
+        "availableQuantity": { "type": "number" },
+        "lastMovementDate": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "stock_movements": {
+      "description": "Immutable ledger of all stock alterations",
+      "properties": {
+        "partId": { "type": "string" },
+        "partNumber": { "type": "string" },
+        "partName": { "type": "string" },
+        "movementType": { "type": "string" },
+        "quantity": { "type": "number" },
+        "previousQuantity": { "type": "number" },
+        "newQuantity": { "type": "number" },
+        "sourceLocation": { "type": "string" },
+        "destinationLocation": { "type": "string" },
+        "branchId": { "type": "string" },
+        "warehouseId": { "type": "string" },
+        "reference": { "type": "string" },
+        "reason": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "timestamp": { "type": "string" }
+      }
+    },
+    "audit_logs": {
+      "description": "System actions and change tracking",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "action": { "type": "string" },
+        "entity": { "type": "string" },
+        "entityId": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string" }
+      }
+    }
+  }
+}

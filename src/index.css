@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-secondary: #f1f5f9;
+    --bg-input: #ffffff;
+    --border-color: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --accent-glow: rgba(0, 0, 0, 0.05);
+  }
+
+  html.dark {
+    --bg-main: #050505;
+    --bg-card: #0c0c0e;
+    --bg-card-secondary: #121216;
+    --bg-input: #111114;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #d4d4d8;
+    --text-muted: #71717a;
+    --accent-glow: rgba(255, 255, 255, 0.03);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-secondary);
+    font-family: 'Tajawal', 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  h1, h2, .font-serif-luxury {
+    font-family: 'Tajawal', 'Cinzel', Georgia, serif;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    direction: ltr;
+    display: inline-block;
+  }
+}
+
+/* Custom luxury scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.5);
+}
+
+/* Responsive Table Wrapper without breaking viewport */
+.table-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Safe touch target size for mobile */
+@media (max-width: 640px) {
+  button, a, input, select, textarea {
+    min-height: 40px;
+  }
+}

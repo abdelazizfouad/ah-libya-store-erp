@@ -1,0 +1,10 @@
+{
+  "name": "AH.Libya Store ERP",
+  "description": "نظام إدارة مخازن وقطع غيار مرسيدس-بنز لشركة أشرف وهشام ليبيا (AH.Libya) — يشمل كتالوج القطع، فك شاسيهات VIN، المبيعات، المشتريات، سجل النواقص، إدارة مواقع الأرفف، والتقارير المالية.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
